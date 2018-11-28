@@ -12,10 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api':{
-        target: 'http://localhost:8081',
-        pathRewrite: {
-          '^/api': '/static/testrouter'
-        }
+        target: 'http://www.xintp5.com',
+        changeOrigin: true,
       }
     },
 

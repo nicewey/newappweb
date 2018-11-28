@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import HomeHeader from './components/Header'
 import HomeSwiper from './components/Swiper'
 import HomeIcons from './components/Icons'
 import HomeRecommend from './components/Recommend'
@@ -19,7 +18,8 @@ import { mapState } from 'vuex'
 export default {
   name: 'Home',
   components: {
-    HomeHeader,
+    // js 至少超过1m 再用
+    HomeHeader: () => import('./components/Header'),
     HomeSwiper,
     HomeIcons,
     HomeRecommend,
@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     getHomeInfo () {
-      axios.get('/api/index.json?city=' + this.city)
+      axios.get('/api/index?city=' + this.city)
         .then(this.getHomeInfoSucc)
     },
     getHomeInfoSucc (res) {

@@ -27,6 +27,7 @@ export default {
   },
   methods: {
     handleScroll () {
+      console.log(11)
       const top = document.documentElement.scrollTop
       if (top > 60) {
         let opacity = top / 140
@@ -41,8 +42,8 @@ export default {
     }
   },
   activated () {
-    // 全局对象 必须解绑
-    window.addEventListener('scroll', this.handleScroll)
+    // 全局对象 必须解绑 最后那个参数只有谷歌浏览器支持
+    window.addEventListener('scroll', this.handleScroll, {passive: true})
   },
   deactivated () {
     window.removeEventListener('scroll', this.handleScroll)
